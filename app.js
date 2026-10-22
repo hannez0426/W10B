@@ -64,3 +64,93 @@ function checkLength(selector) {
 
 // Call the function.
 checkLength(".subtitle");
+
+
+// BONUS 2
+// Check multiple CSS selectors for the word "happy".
+
+function checkHappy(selectors) {
+
+    for (let i = 0; i < selectors.length; i++) {
+
+        let elements = document.querySelectorAll(selectors[i]);
+
+        for (let j = 0; j < elements.length; j++) {
+
+            if (elements[j].innerHTML.includes("happy")) {
+
+                elements[j].insertAdjacentHTML(
+                    "afterend",
+                    "<p>happy tag above</p>"
+                );
+
+            }
+        }
+    }
+}
+
+// Array of CSS selectors.
+let selectors = [".comment", ".message"];
+
+// Call the function.
+checkHappy(selectors);
+
+
+// BONUS 3
+// Create an array of student profile objects.
+
+let students = [
+    {
+        username: "Anna",
+        bio: "Golly, I love JavaScript!",
+        profile_image_url: "https://placehold.co/100x100"
+    },
+    {
+        username: "John",
+        bio: "Darn, coding is challenging!",
+        profile_image_url: "https://placehold.co/100x100"
+    },
+    {
+        username: "Maria",
+        bio: "Frick, I made a mistake!",
+        profile_image_url: "https://placehold.co/100x100"
+    }
+];
+
+// Select the empty profiles div.
+let profiles = document.getElementById("profiles");
+
+// Loop through each student.
+for (let i = 0; i < students.length; i++) {
+
+    // Replace all banned words with *.
+    let cleanBio = students[i].bio.replace(
+        /frick|darn|golly/gi,
+        "*"
+    );
+
+    // Create a profile container.
+    let profile = document.createElement("div");
+
+    // Create the username heading.
+    let name = document.createElement("h3");
+    name.innerText = students[i].username;
+
+    // Create the profile image.
+    let image = document.createElement("img");
+    image.src = students[i].profile_image_url;
+    image.alt = students[i].username;
+    image.width = 100;
+
+    // Create the bio paragraph.
+    let bio = document.createElement("p");
+    bio.innerText = cleanBio;
+
+    // Add elements to the profile container.
+    profile.appendChild(name);
+    profile.appendChild(image);
+    profile.appendChild(bio);
+
+    // Add the profile to the webpage.
+    profiles.appendChild(profile);
+}
