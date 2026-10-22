@@ -44,3 +44,23 @@ for (let i = 0; i < comments.length; i++) {
         "<h4>Student Comment:</h4>"
     );
 }
+
+
+// BONUS 1
+// Replace short HTML content with "NOT ENOUGH".
+
+function checkLength(selector) {
+
+    let elements = document.querySelectorAll(selector);
+
+    for (let i = 0; i < elements.length; i++) {
+
+        if (elements[i].innerHTML.length < 30) {
+            elements[i].innerHTML = "NOT ENOUGH";
+        }
+
+    }
+}
+
+// Call the function.
+checkLength(".subtitle");
